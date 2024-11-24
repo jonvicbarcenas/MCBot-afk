@@ -1,6 +1,7 @@
 import { createBot } from 'mineflayer'
 import { loader as autoEat } from 'mineflayer-auto-eat'
 import pathfinderPlugin from 'mineflayer-pathfinder'
+const armorManager = require('mineflayer-armor-manager')
 
 const { pathfinder, Movements, goals } = pathfinderPlugin
 const { GoalNear } = goals
@@ -16,6 +17,8 @@ const bot = createBot({
 
 bot.loadPlugin(autoEat)
 bot.loadPlugin(pathfinder)
+bot.loadPlugin(armorManager)
+
 
 bot.once('spawn', async () => {
   const defaultMove = new Movements(bot)
