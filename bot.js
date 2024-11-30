@@ -34,7 +34,7 @@ bot.on('chat', (username, message) => {
   if (username === bot.username) return
 
   if (message === 'follow' || message === 'f') {
-    const playerEntity = bot.players[username]?.entity
+    const playerEntity = bot.players['Dainsleif']?.entity
     if (playerEntity) {
       bot.chat('ok!')
       playerFollowing = true
