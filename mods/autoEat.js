@@ -1,4 +1,6 @@
 import { loader as autoEat } from 'mineflayer-auto-eat'
+import { autoBow } from './hawkeye.cjs'
+
 
 export function setupAutoEat(bot) {
   bot.loadPlugin(autoEat)
