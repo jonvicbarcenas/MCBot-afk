@@ -1,9 +1,9 @@
-
 import pathfinderPlugin from 'mineflayer-pathfinder'
 
 const { pathfinder, Movements, goals } = pathfinderPlugin
 const { GoalNear } = goals
 
+let moveInterval;
 
 export function setupMoveToPosition(bot, position1, position2) {
     bot.loadPlugin(pathfinder)
@@ -21,5 +21,12 @@ export function setupMoveToPosition(bot, position1, position2) {
     }
 
     // Move between positions every 15 seconds
-    setInterval(moveBetweenPositions, 15000)
+    moveInterval = setInterval(moveBetweenPositions, 15000)
+}
+
+export function stopMoveToPosition() {
+    if (moveInterval) {
+        clearInterval(moveInterval);
+        moveInterval = null;
+    }
 }

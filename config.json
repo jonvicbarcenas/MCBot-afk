@@ -1,0 +1,21 @@
+{
+    "bot": {
+      "host": "hutaobich123456.aternos.me",
+      "username": "bayot",
+      "auth": "offline",
+      "version": "1.19"
+    },
+
+    "position1": { 
+        "x": 610, 
+        "y": 63, 
+        "z": 646 
+    },
+    
+    "position2": { 
+        "x": 610, 
+        "y": 63, 
+        "z": 633 
+    }
+}
+  

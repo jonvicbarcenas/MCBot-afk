@@ -4,22 +4,19 @@ import armorManager from 'mineflayer-armor-manager'
 import { setupAutoEat } from './mods/autoEat.js'
 import { autoBow } from './mods/hawkeye.cjs'
 import { followPlayer } from './mods/followPlayer.js'
+import {autoPvp} from './mods/pvp.cjs'
 
 import inventoryViewer from 'mineflayer-web-inventory'
+import config from './config.json' assert { type: 'json' };
 
-const position1 = { x: 610, y: 63, z: 646 }
-const position2 = { x: 610, y: 63, z: 633 }
+const position1 = config.position1
+const position2 = config.position2
 
-const bot = createBot({
-  host: 'hutaobich123456.aternos.me',
-  username: 'bayot',
-  auth: 'offline',
-  version: '1.19',
-})
+const bot = createBot(config.bot);
+
 inventoryViewer(bot)
+autoPvp(bot)
 bot.loadPlugin(armorManager)
-
-
 
 bot.once('spawn', async () => {
   setupAutoEat(bot)
@@ -44,7 +41,7 @@ bot.on('chat', (username, message) => {
     }
   }
 
-  if (message === 'stop') {
+  if (message === 'stop' && playerFollowing) {
     bot.chat('Stopping follow.')
     playerFollowing = false
     followTarget = null
@@ -63,7 +60,7 @@ bot.on('physicsTick', () => {
     }
   }
 
-  //* Prevent spam by only sending message every 10 seconds
+  //* Prevent spam by only sending message every 3 seconds
   if (bot.health >= 20 && Date.now() - lastHealthMessage > 3000) {
     autoBow(bot)
     lastHealthMessage = Date.now()

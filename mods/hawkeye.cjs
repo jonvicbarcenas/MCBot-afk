@@ -21,7 +21,7 @@ async function autoBow(bot) {
         bot.hawkEye.stop();
         return false;
     }else{
-        console.log('Target is close');
+        console.log('Target is close within bow range');
         bot.hawkEye.autoAttack(target, weapon);
     }
 
